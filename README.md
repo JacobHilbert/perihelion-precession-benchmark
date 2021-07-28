@@ -7,4 +7,4 @@ How fast can a language solve the mercury perihelion precession problem using an
 * Use the same heuristic strategy to decrease temporal resolution on perihelion
 * Use an user-defined structure/class
   * Use operator overload if possible
-* All optimizations allowed
+* All optimizations are allowed
