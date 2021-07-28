@@ -1,12 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import numba as nb
-from numba.typed import List as TypedList
 
 # AU, years
 μ = 39.4234021    # gravitational parameter G*M_sun. AU^3/Years^2
 a = 0.38709893    # semimajor axis
-α = 1.09778201e-8 # 1.1e-8, units of AU^2, is 3L^2/(mc)^2, where m is reduced mass, L angular momentum
+α = 1.09778201e-8 # units of AU^2, is 3L^2/(mc)^2, where m is reduced mass, L angular momentum
 e = 0.20563069    # eccentricity
 
 
@@ -38,7 +37,7 @@ def verlet(t_max,dt_max,dt_min):
 	dt = dt_max
 	t = 0.
 	while t < t_max:
-		r_now = r_past + v_past*dt + acceleration(r_past)*dt**2/2
+		r_now = r_past + v_past*dt + a_past*dt**2/2
 		a_now = acceleration(r_now)
 		v_now = v_past + dt*(a_now+a_past)/2
 		event_now = np.dot(r_now,v_now)
@@ -63,5 +62,5 @@ def verlet(t_max,dt_max,dt_min):
 		event_past = event_now
 		t += dt
 
-verlet(2.0,1e-6,1e-12)
+verlet(10.0,1e-6,1e-12)
 
